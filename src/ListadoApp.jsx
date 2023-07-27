@@ -1,23 +1,33 @@
-const Items = ({nombre, visto})=>{
+import { useState } from "react"
+
+const Item = ({nombre, visto})=>{
     return(
-        <li>{nombre} {visto? '✅':'❎'}</li>
+        <li>{nombre} {visto? '✅':'❌'}</li>
     )
 }
 export const ListadoApp = () => {
+    function handleClick(){
+        setArreglo([...arreglo,{nombre:'Nuevo Tema',visto:false}])
+    }
+    const temas=[
+        {nombre:"Instalaciones necesarias", visto:true},
+        {nombre:"Uso de vite", visto:true},
+        {nombre:"Componentes", visto:true},
+        {nombre:"Variables en JSX", visto:true},
+        {nombre:"Props", visto:true},
+        {nombre:"Eventos", visto:true},
+        {nombre:"useState", visto:true},
+        {nombre:"Redux", visto:false},
+        {nombre:"customHooks", visto:false}
+     ]
+     const [arreglo,setArreglo]=useState(temas)
   return (
     <>
         <h1>Listado de temas del curso</h1>
         <ul>
-            <Items nombre="Instalaciones necesarias" visto={true}></Items>
-            <Items nombre="Uso de vite" visto={true}></Items>
-            <Items nombre="Componentes" visto={true}></Items>
-            <Items nombre="Variables en JSX" visto={true}></Items>
-            <Items nombre="Props" visto={true}></Items>
-            <Items nombre="Eventos" visto={true}></Items>
-            <Items nombre="useState" visto={true}></Items>
-            <Items nombre="Redux" visto={false}></Items>
-            <Items nombre="customHooks" visto={false}></Items>
+            {arreglo.map(item=><Item key={item.nombre} nombre={item.nombre} visto={item.visto}></Item>)}
         </ul>
+        <button onClick={handleClick}>Agregar un tema</button>
     </>
   )
 }
