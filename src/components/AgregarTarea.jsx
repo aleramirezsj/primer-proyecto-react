@@ -7,11 +7,7 @@ export const AgregarTarea = ({funcionAgregarTarea}) => {
     }
     const handleOnSubmit=(event)=>{
         event.preventDefault()
-        const envio={
-            nombre:inputValue,
-            visto:false
-        }
-        funcionAgregarTarea(tareas=>[...tareas,envio])
+        funcionAgregarTarea(inputValue)
     }
     return (
         <form onSubmit={handleOnSubmit}>
