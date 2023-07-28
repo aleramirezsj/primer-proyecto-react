@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { AgregarTarea } from "./components/agregarTarea"
 
 const Item = ({nombre, visto})=>{
     return(
@@ -24,10 +25,10 @@ export const ListadoApp = () => {
   return (
     <>
         <h1>Listado de temas del curso</h1>
+        <AgregarTarea></AgregarTarea>
         <ul>
             {arreglo.map(item=><Item key={item.nombre} nombre={item.nombre} visto={item.visto}></Item>)}
         </ul>
-        <button onClick={handleClick}>Agregar un tema</button>
     </>
   )
 }
